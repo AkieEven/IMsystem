@@ -10,10 +10,11 @@
         <entry key="..\:/AndroidProject/FirstExample/app/src/main/res/drawable/ic_lock.xml" value="0.259" />
         <entry key="..\:/AndroidProject/FirstExample/app/src/main/res/drawable/navigation_item_icon.xml" value="0.1995" />
         <entry key="..\:/AndroidProject/FirstExample/app/src/main/res/layout/activity_login.xml" value="0.264" />
-        <entry key="..\:/AndroidProject/FirstExample/app/src/main/res/layout/activity_main.xml" value="0.4" />
+        <entry key="..\:/AndroidProject/FirstExample/app/src/main/res/layout/activity_main.xml" value="0.264" />
         <entry key="..\:/AndroidProject/FirstExample/app/src/main/res/layout/fragment_contacts.xml" value="0.20820863616930313" />
         <entry key="..\:/AndroidProject/FirstExample/app/src/main/res/layout/fragment_dashboard.xml" value="0.20820863616930313" />
-        <entry key="..\:/AndroidProject/FirstExample/app/src/main/res/layout/fragment_message.xml" value="0.1" />
+        <entry key="..\:/AndroidProject/FirstExample/app/src/main/res/layout/fragment_message.xml" value="0.264" />
+        <entry key="..\:/AndroidProject/FirstExample/app/src/main/res/layout/item_for_messagelist.xml" value="0.8" />
         <entry key="..\:/AndroidProject/FirstExample/app/src/main/res/menu/bottom_nav_menu.xml" value="0.20820863616930313" />
         <entry key="..\:/AndroidProject/FirstExample/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.259" />
       </map>

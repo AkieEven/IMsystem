@@ -6,21 +6,36 @@
     android:layout_height="match_parent"
     tools:context=".ui.message.MessageFragment">
 
-    <cn.jiguang.imui.messages.MessageList
-        android:id="@+id/msg_list"
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/message_list_toolbar"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:avatarHeight="50dp"
-        app:avatarWidth="50dp"
-        app:bubbleMaxWidth="0.70"
-        app:dateTextSize="14sp"
-        app:receiveBubblePaddingLeft="20dp"
-        app:receiveBubblePaddingRight="10dp"
-        app:receiveTextColor="#ffffff"
-        app:receiveTextSize="18sp"
-        app:sendBubblePaddingLeft="10dp"
-        app:sendBubblePaddingRight="20dp"
-        app:sendTextColor="#7587A8"
-        app:sendTextSize="18sp" />
+        android:layout_height="64dp"
+        android:background="@color/blue"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
+        <TextView
+            android:id="@+id/message_title"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="center|center_horizontal"
+            android:gravity="center"
+            android:text="@string/main_home"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            tools:layout_editor_absoluteX="16dp"
+            tools:layout_editor_absoluteY="18dp" />
+    </androidx.appcompat.widget.Toolbar>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/messageList"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/message_list_toolbar" />
 </androidx.constraintlayout.widget.ConstraintLayout>
