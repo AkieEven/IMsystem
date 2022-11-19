@@ -7,7 +7,7 @@ android {
 
     defaultConfig {
         applicationId "com.example.example"
-        minSdk 21
+        minSdk 24
         targetSdk 32
         versionCode 1
         versionName "1.0"
@@ -29,7 +29,11 @@ android {
         viewBinding true
         dataBinding true
     }
-}
+    packagingOptions {
+        exclude 'META-INF/INDEX.LIST'
+        exclude 'META-INF/io.netty.versions.properties'
+    }
+    }
 
 dependencies {
 
@@ -48,4 +52,12 @@ dependencies {
     implementation 'cn.jiguang.imui:chatinput:0.10.0'
 
     implementation 'com.github.bumptech.glide:glide:4.11.0'
+    implementation 'com.makeramen:roundedimageview:2.3.0'
+    implementation 'com.google.protobuf:protobuf-java:3.20.1'
+    implementation 'io.netty:netty-all:4.1.76.Final'
+    implementation 'com.alibaba:fastjson:1.2.80'
+
+    implementation 'androidx.room:room-runtime:2.4.2'
+    annotationProcessor 'androidx.room:room-compiler:2.4.2'
+    testImplementation 'androidx.room:room-testing:2.4.2'
 }

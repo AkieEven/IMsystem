@@ -3,19 +3,22 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="@dimen/message_list_item_height">
+    android:layout_height="@dimen/message_list_item_height"
+    android:id="@+id/message_list_item">
 
-    <ImageView
+    <com.makeramen.roundedimageview.RoundedImageView
         android:id="@+id/item_image"
-        android:layout_width="@dimen/message_list_icon_height"
-        android:layout_height="@dimen/message_list_icon_height"
+        android:layout_height="66dp"
+        android:layout_width="66dp"
         android:layout_marginStart="8dp"
-        android:foregroundGravity="center_vertical"
-        android:scaleType="centerInside"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="6dp"
+        app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:srcCompat="@tools:sample/avatars" />
+        app:riv_corner_radius="32dp"
+        android:scaleType="centerCrop"
+        app:riv_oval="false"
+        app:riv_tile_mode="repeat"
+        android:src="@drawable/background" />
 
     <TextView
         android:id="@+id/item_name"

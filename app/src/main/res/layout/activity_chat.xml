@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.ChatActivity">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/chat_title"
+        android:layout_width="match_parent"
+        android:layout_height="64dp"
+        android:background="@color/blue"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/contact_name"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="center|center_horizontal"
+            android:gravity="center"
+            android:text="@string/main_contacts"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            tools:layout_editor_absoluteX="16dp"
+            tools:layout_editor_absoluteY="18dp" />
+    </androidx.appcompat.widget.Toolbar>
+
+    <cn.jiguang.imui.messages.MessageList
+        android:id="@+id/msg_list"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="64dp"
+        app:avatarHeight="48dp"
+        app:avatarRadius="5dp"
+        app:avatarWidth="48dp"
+        app:bubbleMaxWidth="0.70"
+        app:dateTextSize="14sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/chat_title"
+        app:layout_constraintBottom_toTopOf="@+id/chat_input"
+        app:receiveBubblePaddingLeft="16dp"
+        app:receiveBubblePaddingRight="8dp"
+        app:receiveTextColor="#ffffff"
+        app:receiveTextSize="14sp"
+        app:sendBubblePaddingLeft="8dp"
+        app:sendBubblePaddingRight="16dp"
+        app:sendTextColor="#7587A8"
+        app:sendTextSize="14sp"
+        app:showReceiverDisplayName="true"
+        app:showSenderDisplayName="false" />
+
+    <cn.jiguang.imui.chatinput.ChatInputView
+        android:id="@+id/chat_input"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:inputMarginLeft="3dp"
+        app:inputMarginRight="3dp"
+        app:cameraQuality="0.6"
+        app:showSelectAlbum="true"/>
+</androidx.constraintlayout.widget.ConstraintLayout>

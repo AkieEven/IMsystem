@@ -1,8 +1,11 @@
-package com.example.example;
+package com.example.example.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 
+import com.example.example.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -35,4 +38,13 @@ public class MainActivity extends AppCompatActivity {
         NavigationUI.setupWithNavController(binding.navView,navController);
     }
 
+    public void toNewFriend(View view) {
+        Intent intent = new Intent(MainActivity.this,NewFriendActivity.class);
+        startActivity(intent);
+    }
+
+    public void toNewGroup(View view) {
+        Intent intent = new Intent(MainActivity.this,NewGroupActivity.class);
+        startActivity(intent);
+    }
 }

@@ -14,6 +14,7 @@
         android:minHeight="?attr/actionBarSize"
         android:theme="?attr/actionBarTheme"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
@@ -26,8 +27,9 @@
             android:text="@string/main_home"
             android:textColor="@color/white"
             android:textSize="20sp"
-            tools:layout_editor_absoluteX="16dp"
+            tools:layout_editor_absoluteX="0dp"
             tools:layout_editor_absoluteY="18dp" />
+
     </androidx.appcompat.widget.Toolbar>
 
     <androidx.recyclerview.widget.RecyclerView
@@ -38,4 +40,5 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/message_list_toolbar" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

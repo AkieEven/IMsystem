@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.serverdemo.mapper.FriendshipMapper">
+    <insert id="insertFriendship" parameterType="com.example.serverdemo.entity.Friendship">
+        insert into friendships(userId,friendId,groupId,friendName,friendAvatar)
+        values(#{userId},#{friendId},#{groupId},#{friendName},#{friendAvatar})
+    </insert>
+
+    <select id="selectFriendById" parameterType="int" resultType="String">
+        select userId from friendships where userId = #{userId}
+    </select>
+
+    <select id="selectFriendship" parameterType="com.example.serverdemo.utils.FriendshipCard" resultType="com.example.serverdemo.entity.Friendship">
+        select * from friendships where userId = #{userId} and friendId = #{friendId}
+    </select>
+
+</mapper>

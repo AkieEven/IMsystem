@@ -1,6 +1,5 @@
-package com.example.example.utils;
+package com.example.example.adapter;
 
-import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,19 +7,28 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.example.R;
-import com.example.example.model.User;
+import com.example.example.bean.User;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.List;
+import java.util.Arrays;
 
-public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ViewHolder> {
+public class MessageItemAdapter extends RecyclerView.Adapter<MessageItemAdapter.ViewHolder> {
     private ArrayList<User> mData;
+    private OnItemClickListener mOnItemClickListener;
 
-    public ItemAdapter(ArrayList<User> friends) {
+    //tmp
+    ArrayList<String> tmp = new ArrayList<>(Arrays.asList("15:30","你好","19:26","晚上吃什么","16:22","溜了溜了"));
+    ArrayList<String> tmp1 = new ArrayList<>(Arrays.asList("你好","晚上吃什么","溜了溜了"));
+
+    public interface OnItemClickListener{
+        void onItemClick(View view,int position);
+    }
+
+    public MessageItemAdapter(ArrayList<User> friends) {
         this.mData = friends;
     }
 
@@ -32,13 +40,22 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ViewHolder> {
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ItemAdapter.ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull MessageItemAdapter.ViewHolder holder,int position) {
         User user = mData.get(position);
         holder.nameTextView.setText(user.getDisplayName());
         /* todo 实现数据库内部消息查询，暂用固定数据代替*/
-        holder.timeTextView.setText("fuck you");
-        holder.messageTextView.setText("fuck you");
+        holder.timeTextView.setText(tmp.get(position));
+        holder.messageTextView.setText(tmp1.get(position));
         holder.avaterImageView.setImageResource(R.drawable.background);
+        holder.messageListItem.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(mOnItemClickListener != null){
+                    mOnItemClickListener.onItemClick(view, holder.getAdapterPosition());
+                }
+            }
+        });
+
     }
 
     @Override
@@ -47,6 +64,7 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ViewHolder> {
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
+        private ConstraintLayout messageListItem;
         private TextView messageTextView;
         private TextView timeTextView;
         private TextView nameTextView;
@@ -54,11 +72,20 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ViewHolder> {
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
+            messageListItem = itemView.findViewById(R.id.message_list_item);
             messageTextView = itemView.findViewById(R.id.item_text);
             timeTextView = itemView.findViewById(R.id.item_time);
             nameTextView = itemView.findViewById(R.id.item_name);
             avaterImageView = itemView.findViewById(R.id.item_image);
         }
+    }
+
+    public void setOnItemClickListener(OnItemClickListener listener){
+        this.mOnItemClickListener = listener;
+    }
+
+    public ArrayList<User> getData(){
+        return mData;
     }
 
 }

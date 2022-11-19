@@ -1,7 +1,6 @@
-package com.example.example.model;
+package com.example.example.bean;
 
 import java.util.HashMap;
-import java.util.Random;
 import java.util.UUID;
 
 import cn.jiguang.imui.commons.models.IMessage;
@@ -9,19 +8,22 @@ import cn.jiguang.imui.commons.models.IUser;
 
 public class Message implements IMessage {
 
-    private long id;
+    private String id;
     private String text;
     private IUser fromUser;
     private String timeString;
     private int type;
-    private MessageStatus status;
+    private MessageStatus status = MessageStatus.CREATED;
     private String mediaFilePath;
     private long duration;
+
+    public Message() {
+    }
 
     public Message(String text, int type) {
         this.text = text;
         this.type = type;
-        this.id = UUID.randomUUID().getLeastSignificantBits();
+        this.id = String.valueOf(UUID.randomUUID().getLeastSignificantBits());
     }
 
     /**
@@ -31,7 +33,10 @@ public class Message implements IMessage {
      */
     @Override
     public String getMsgId() {
-        return String.valueOf(id);
+        return id;
+    }
+    public void setMsgId(String id) {
+        this.id = id;
     }
 
     /**
@@ -44,6 +49,10 @@ public class Message implements IMessage {
         return this.fromUser;
     }
 
+    public void setFromUser(IUser user) {
+        this.fromUser = user;
+    }
+
     /**
      * Time string that display in message list.
      *
@@ -52,6 +61,9 @@ public class Message implements IMessage {
     @Override
     public String getTimeString() {
         return timeString;
+    }
+    public void setTimeString(String timestamp) {
+        this.timeString = timestamp;
     }
 
     /**
@@ -63,10 +75,17 @@ public class Message implements IMessage {
     public int getType() {
         return type;
     }
+    public void setType(int type) {
+        this.type = type;
+    }
 
     @Override
     public MessageStatus getMessageStatus() {
         return status;
+    }
+
+    public void setStatus(MessageStatus status) {
+        this.status = status;
     }
 
     /**
@@ -77,6 +96,9 @@ public class Message implements IMessage {
     @Override
     public String getText() {
         return text;
+    }
+    public void setText(String text) {
+        this.text = text;
     }
 
     /**

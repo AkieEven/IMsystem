@@ -12,4 +12,5 @@
     <color name="light_blue_transparent">#4D97D1FF</color>
     <color name="grey">#9F9F9F</color>
     <color name="pressed">#4DA3A3A3</color>
+    <color name="red">#4DFF0000</color>
 </resources>

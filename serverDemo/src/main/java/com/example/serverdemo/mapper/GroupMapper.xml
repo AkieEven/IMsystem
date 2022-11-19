@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.serverdemo.mapper.GroupMapper">
+    <insert id="insertUserGroup" parameterType="com.example.serverdemo.entity.Group">
+        insert into usergroups(groupId,userId,groupName)
+        values(#{groupId},#{userId},#{groupName})
+    </insert>
+
+    <insert id="insertGroup" parameterType="com.example.serverdemo.entity.Group">
+        insert into usergroups(userId,groupName)
+        values(#{userId},#{groupName})
+    </insert>
+
+    <select id="selectByUserId" parameterType="int" resultType="com.example.serverdemo.entity.Group">
+        select * from usergroups where userId = #{userId}
+    </select>
+
+</mapper>

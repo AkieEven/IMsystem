@@ -1,0 +1,27 @@
+plugins {
+    id 'java-library'
+}
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_1_7
+    targetCompatibility = JavaVersion.VERSION_1_7
+}
+
+sourceSets {
+    main {
+        resources {
+            srcDir 'src/main/java'
+        }
+    }
+}
+
+dependencies {
+    implementation 'io.netty:netty-all:4.1.76.Final'
+    implementation 'com.alibaba:fastjson:1.2.80'
+    implementation 'com.google.protobuf:protobuf-java:3.20.1'
+    implementation 'org.mybatis:mybatis:3.5.10'
+    implementation 'mysql:mysql-connector-java:8.0.29'
+
+    compileOnly 'org.projectlombok:lombok:1.18.24'
+    annotationProcessor 'org.projectlombok:lombok:1.18.24'
+}
