@@ -1,4 +1,4 @@
-package com.example.example.event;
+package com.example.example.messagehandler.event;
 
 import android.text.TextUtils;
 import android.util.Log;

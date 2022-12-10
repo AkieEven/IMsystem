@@ -24,9 +24,10 @@ public class FriendInfoMsgHandler implements IMessageHandler{
         boolean status = jsonObject.getBoolean("status");
 
         //插入数据库并构建
-        AppDatabase.getInstance().FriendshipDao().insertFriendship(friendship);
-        User userPersist = new User(friendId,friendName,friendAvatar);
-        AppDatabase.getInstance().UserDao().insertUser(userPersist);
+//        AppDatabase.getInstance().FriendshipDao().insertFriendship(friendship);
+//        User userPersist = new User(friendId,friendName,friendAvatar);
+//        AppDatabase.getInstance().UserDao().insertUser(userPersist);
+
         User user = new User(friendId,friendName,status,friendAvatar);
         UserData.getContactGroups().get(UserData.getGroupPosition().get(Long.toString(jsonObject.getLongValue("groupId")))).addGroupMember(user);
 

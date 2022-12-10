@@ -59,6 +59,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/add_friend_toolbar"
         app:layout_constraintLeft_toLeftOf="@+id/add_friend_input"
+        android:onClick="searchFriend"
         app:srcCompat="@drawable/ic_baseline_search_24"
         android:scaleType="fitXY"/>
 

@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -13,18 +12,11 @@ import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.alibaba.fastjson.JSON;
-import com.alibaba.fastjson.JSONObject;
 import com.example.example.activity.ChatActivity;
-import com.example.example.activity.LoginActivity;
-import com.example.example.activity.MainActivity;
 import com.example.example.databinding.FragmentMessageBinding;
 import com.example.example.bean.User;
 import com.example.example.adapter.MessageItemAdapter;
-import com.example.example.event.ClientEventListener;
-import com.example.example.event.Event;
-import com.example.example.messagehandler.IMessageHandler;
-import com.example.example.thread.ClientThreadPoolExecutor;
+import com.example.example.messagehandler.event.ClientEventListener;
 
 import java.util.ArrayList;
 import java.util.Arrays;

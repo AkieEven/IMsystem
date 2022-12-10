@@ -1,5 +1,7 @@
 package com.example.example.adapter;
 
+import android.annotation.SuppressLint;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -39,14 +41,17 @@ public class UserItemAdapter extends RecyclerView.Adapter<UserItemAdapter.UserVi
     public void onBindViewHolder(@NonNull @NotNull UserItemAdapter.UserViewHolder holder, int position) {
         User user = mData.get(position);
         holder.friendName.setText(user.getDisplayName());
+        //TODO:ADD AVATAR
         holder.avatar.setImageResource(R.drawable.background);
-        /*holder.addFriend.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                IMClientBootstrap.getInstance().sendMsg(MessageUtil.buildFriendApply(user.getId()),false);
-            }
-        });
-         */
+        holder.addFriend.setOnClickListener(new View.OnClickListener() {
+                                                @SuppressLint("ResourceAsColor")
+                                                @Override
+                                                public void onClick(View view) {
+                                                    IMClientBootstrap.getInstance().sendMsg(MessageUtil.buildFriendApply(user.getId()), false);
+                                                    holder.addFriend.setOnClickListener(null);
+                                                    holder.addFriend.setBackgroundColor(Color.GRAY);
+                                                }
+                                            });
     }
 
     @Override

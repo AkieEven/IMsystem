@@ -1,4 +1,4 @@
-package com.example.example.event;
+package com.example.example.messagehandler.event;
 
 public class Event {
     public static final String REGISTER_EVENT = "register";

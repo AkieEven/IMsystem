@@ -2,23 +2,16 @@ package com.example.example.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.ImageView;
-import android.widget.Toast;
 
-import com.alibaba.fastjson.JSON;
-import com.alibaba.fastjson.JSONObject;
 import com.bumptech.glide.Glide;
 import com.example.example.IMApp;
-import com.example.example.bean.MessageProtobuf;
 import com.example.example.connection.IMClientBootstrap;
 import com.example.example.databinding.ActivityChatBinding;
 import com.example.example.bean.Message;
-import com.example.example.bean.User;
-import com.example.example.event.ClientEventListener;
-import com.example.example.event.Event;
+import com.example.example.messagehandler.event.ClientEventListener;
+import com.example.example.messagehandler.event.Event;
 import com.example.example.thread.ClientThreadPoolExecutor;
 import com.example.example.ui.message.MessageFragment;
 import com.example.example.utils.MessageUtil;

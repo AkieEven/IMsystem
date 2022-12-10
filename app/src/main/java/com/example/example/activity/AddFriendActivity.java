@@ -5,18 +5,20 @@ import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Toast;
 
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
 import com.example.example.adapter.UserItemAdapter;
-import com.example.example.bean.Message;
+import com.example.example.bean.MessageProtobuf;
 import com.example.example.bean.User;
 import com.example.example.connection.IMClientBootstrap;
 import com.example.example.databinding.ActivityAddFriendBinding;
-import com.example.example.databinding.ActivityLoginBinding;
-import com.example.example.event.ClientEventListener;
-import com.example.example.event.Event;
+import com.example.example.messagehandler.event.ClientEventCenter;
+import com.example.example.messagehandler.event.ClientEventListener;
+import com.example.example.messagehandler.event.Event;
 import com.example.example.thread.ClientThreadPoolExecutor;
 import com.example.example.utils.MessageUtil;
 
@@ -39,23 +41,34 @@ public class AddFriendActivity extends AppCompatActivity implements ClientEventL
         binding.addFriendList.setAdapter(userItemAdapter);
         binding.addFriendList.setLayoutManager(layoutManager);
         binding.addFriendList.setItemAnimator(new DefaultItemAnimator());
+
+        ClientEventCenter.registerEventListener(this, Event.FRIEND_SEARCH_RESPONSE);
     }
 
     public void searchFriend(View view) {
         String friendEmail = binding.addFriendInput.getText().toString();
-        //todo:加入超时重传
+        //todo:加入应用层去重的机制
         IMClientBootstrap.getInstance().sendMsg(MessageUtil.buildFriendSearchMsg(friendEmail),false);
     }
 
     @Override
     public void onEvent(String topic, int msgCode, int resultCode, Object obj) {
-        User user = (User)obj;
+        MessageProtobuf.Msg msg = (MessageProtobuf.Msg) obj;
+        JSONObject jsonObject = JSON.parseObject(msg.getExtend());
         if (topic.equals(Event.FRIEND_SEARCH_RESPONSE)) {
             ClientThreadPoolExecutor.runOnMainThread(new Runnable() {
                 @Override
                 public void run() {
-                    userItemAdapter.getData().add(user);
-                    userItemAdapter.notifyItemChanged(0);
+                    if(msg.getStatus() == 1) {
+                        User user = new User(jsonObject.getString("userId"), jsonObject.getString("displayName"));
+                        friends.clear();
+                        friends.add(user);
+                        userItemAdapter.notifyItemChanged(0);
+                    } else {
+                        String info = jsonObject.getString("error");
+                        Toast toast = Toast.makeText(AddFriendActivity.this, info, Toast.LENGTH_SHORT);
+                        toast.show();
+                    }
                 }
             });
         }

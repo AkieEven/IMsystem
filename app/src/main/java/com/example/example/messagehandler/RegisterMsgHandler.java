@@ -2,10 +2,9 @@ package com.example.example.messagehandler;
 
 import android.util.Log;
 
-import com.example.example.activity.RegisterActivity;
 import com.example.example.bean.MessageProtobuf;
-import com.example.example.event.ClientEventCenter;
-import com.example.example.event.Event;
+import com.example.example.messagehandler.event.ClientEventCenter;
+import com.example.example.messagehandler.event.Event;
 
 public class RegisterMsgHandler implements IMessageHandler{
     private static final String TAG = RegisterMsgHandler.class.getSimpleName();

@@ -10,11 +10,11 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.example.example.adapter.NewFriendAdapter;
-import com.example.example.adapter.UserItemAdapter;
 import com.example.example.bean.User;
 import com.example.example.databinding.ActivityNewFriendBinding;
-import com.example.example.event.ClientEventListener;
-import com.example.example.event.Event;
+import com.example.example.messagehandler.event.ClientEventCenter;
+import com.example.example.messagehandler.event.ClientEventListener;
+import com.example.example.messagehandler.event.Event;
 import com.example.example.thread.ClientThreadPoolExecutor;
 
 import java.util.ArrayList;
@@ -36,6 +36,8 @@ public class NewFriendActivity extends AppCompatActivity implements ClientEventL
         binding.friendList.setAdapter(newFriendAdapter);
         binding.friendList.setLayoutManager(layoutManager);
         binding.friendList.setItemAnimator(new DefaultItemAnimator());
+
+        ClientEventCenter.registerEventListener(this,Event.FRIEND_APPLY);
     }
 
     public void toAddFriendActivity(View view) {
@@ -50,7 +52,7 @@ public class NewFriendActivity extends AppCompatActivity implements ClientEventL
                 @Override
                 public void run() {
                     newFriendAdapter.getData().add(user);
-                    newFriendAdapter.notifyDataSetChanged();
+                    newFriendAdapter.notifyItemInserted(friends.size());
                 }
             });
         }

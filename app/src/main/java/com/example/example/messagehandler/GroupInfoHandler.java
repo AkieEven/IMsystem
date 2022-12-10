@@ -5,9 +5,8 @@ import com.alibaba.fastjson.JSONObject;
 import com.example.example.UserData;
 import com.example.example.bean.ContactGroup;
 import com.example.example.bean.MessageProtobuf;
-import com.example.example.event.ClientEventCenter;
-import com.example.example.event.ClientEventListener;
-import com.example.example.event.Event;
+import com.example.example.messagehandler.event.ClientEventCenter;
+import com.example.example.messagehandler.event.Event;
 
 public class GroupInfoHandler implements IMessageHandler{
     @Override

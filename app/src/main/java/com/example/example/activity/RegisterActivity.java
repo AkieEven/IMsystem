@@ -4,26 +4,22 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.Gravity;
 import android.view.View;
 import android.widget.Toast;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
-import com.example.example.IMApp;
 import com.example.example.R;
 import com.example.example.bean.MessageProtobuf;
-import com.example.example.connection.ImClientFactory;
 import com.example.example.databinding.ActivityRegisterBinding;
-import com.example.example.event.ClientEventCenter;
-import com.example.example.event.ClientEventListener;
-import com.example.example.event.Event;
+import com.example.example.messagehandler.event.ClientEventCenter;
+import com.example.example.messagehandler.event.ClientEventListener;
+import com.example.example.messagehandler.event.Event;
 import com.example.example.messagehandler.MessageProcessor;
 import com.example.example.thread.ClientThreadPoolExecutor;
 import com.example.example.utils.MD5Util;
 import com.example.example.utils.MessageUtil;
 import com.example.example.utils.StringProcessor;
-import com.google.android.material.snackbar.Snackbar;
 
 public class RegisterActivity extends AppCompatActivity implements ClientEventListener {
     private ActivityRegisterBinding binding;

@@ -44,7 +44,7 @@ public class IMApp extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-        serverList.add("10.0.2.2 8866");
+        serverList.add("10.0.2.2 1007");
         instance = this;
         registerActivityLifecycleCallbacks(new ActivityLifecycleCallbacks() {
             @Override

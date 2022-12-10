@@ -2,8 +2,8 @@ package com.example.example.messagehandler;
 
 import com.example.example.bean.Message;
 import com.example.example.bean.MessageProtobuf;
-import com.example.example.event.ClientEventCenter;
-import com.example.example.event.Event;
+import com.example.example.messagehandler.event.ClientEventCenter;
+import com.example.example.messagehandler.event.Event;
 import com.example.example.utils.MessageUtil;
 
 public class SingleMessageHandler implements IMessageHandler{

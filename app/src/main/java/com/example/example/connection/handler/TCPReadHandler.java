@@ -53,21 +53,24 @@ public class TCPReadHandler extends ChannelInboundHandlerAdapter {
                 imClient.getMsgTimeoutTimerManager().remove(message.getMsgId());
                 System.out.println("消息发送成功，ID:" + message.getMsgId() + "，从超时管理器中移除。");
             }
-        } else {
-            MessageProtobuf.Msg receivedReportMsg = buildReceivedReportMsg(message.getMsgId());
-            if(receivedReportMsg != null) {
-                imClient.sendMsg(receivedReportMsg);
-            }
         }
+
+        //如果服务端无需确认客户端对于消息的接收
+//        } else {
+//            MessageProtobuf.Msg receivedReportMsg = buildReceivedReportMsg(message.getMsgId());
+//            if(receivedReportMsg != null) {
+//                imClient.sendMsg(receivedReportMsg);
+//            }
+//        }
         imClient.getMsgDispatcher().receiveMessage(message);
     }
 
-    private MessageProtobuf.Msg buildReceivedReportMsg(String msgId) {
-        if(StringUtil.isNullOrEmpty(msgId)) return null;
-        MessageProtobuf.Msg.Builder builder = MessageProtobuf.Msg.newBuilder();
-        builder.setMsgId(msgId);
-        builder.setMsgType(imClient.getClientReceivedReportMsgType());
-        builder.setTimestamp(System.currentTimeMillis());
-        return builder.build();
-    }
+//    private MessageProtobuf.Msg buildReceivedReportMsg(String msgId) {
+//        if(StringUtil.isNullOrEmpty(msgId)) return null;
+//        MessageProtobuf.Msg.Builder builder = MessageProtobuf.Msg.newBuilder();
+//        builder.setMsgId(msgId);
+//        builder.setMsgType(imClient.getClientReceivedReportMsgType());
+//        builder.setTimestamp(System.currentTimeMillis());
+//        return builder.build();
+//    }
 }
